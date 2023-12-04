@@ -1,8 +1,8 @@
-﻿using System;
-namespace monogame2d.Enum
+﻿namespace monogame2d.Enum
 {
-	public enum EmptyEnumeration
+	public enum Events
 	{
+		GAME_QUIT
 	}
 }
 
