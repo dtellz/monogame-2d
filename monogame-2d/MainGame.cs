@@ -4,10 +4,14 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using monogame2d.Enum;
+using monogame2d.Objects;
+using monogame2d.States;
+using monogame2d.States.Base;
 namespace monogame_2d;
 
 public class MainGame : Game
 {
+    private BaseGameState _currentGameState;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     
@@ -49,7 +53,8 @@ public class MainGame : Game
 
         base.Initialize();
     }
-
+    // LoadContent will be called once per game and is the place to load
+    // all of your content.
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -121,5 +126,30 @@ public class MainGame : Game
     }
 
     public virtual void OnNotify(Events eventType) { }
+
+    private void SwitchGameState(BaseGameState gameState)
+    {
+        _currentGameState?.UnloadContent(Content);
+        _currentGameState = gameState;
+        _currentGameState.LoadContent(Content);
+        _currentGameState.OnStateSwitched += CurrentGameState_OnStateSwitched;
+        _currentGameState.OnEventNotification += _currentGameState_OnEventNotification;
+
+    }
+
+    private void _currentGameState_OnEventNotification(object sender, Events e)
+    {
+        switch (e)
+        {
+            case Events.GAME_QUIT:
+                Exit();
+                break;
+        }
+    }
+
+    private void CurrentGameState_OnStateSwitched(object sender, BaseGameState e)
+    {
+        SwitchGameState(e);
+    }
 }
 
