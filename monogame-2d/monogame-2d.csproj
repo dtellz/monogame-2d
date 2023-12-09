@@ -18,6 +18,7 @@
     <None Remove="Enum\" />
     <None Remove="Objects\" />
     <None Remove="Objects\Base\" />
+    <None Remove="Content\images\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -33,6 +34,7 @@
     <Folder Include="Enum\" />
     <Folder Include="Objects\" />
     <Folder Include="Objects\Base\" />
+    <Folder Include="Content\images\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

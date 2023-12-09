@@ -28,11 +28,6 @@ public class MainGame : Game
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
-
-        // Full Screen support
-        _graphics.PreferredBackBufferWidth = 1024;
-        _graphics.PreferredBackBufferHeight = 768;
-        _graphics.IsFullScreen = true;
     }
 
     protected override void Initialize()
@@ -54,9 +49,9 @@ public class MainGame : Game
     // all of your content.
     protected override void LoadContent()
     {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
-
         // TODO: use this.Content to load your game content here
+        _spriteBatch = new SpriteBatch(GraphicsDevice);
+        SwitchGameState(new SplashState());
     }
 
     protected override void Update(GameTime gameTime)
