@@ -17,14 +17,37 @@ namespace monogame2d.States.Base
 
 		public abstract void LoadContent(ContentManager contentManager);
 
-		public abstract void UnloadContent(ContentManager contentManager);
-
 		public abstract void HandleInput();
 
 		public event EventHandler<BaseGameState> OnStateSwitched;
 		public event EventHandler<Events> OnEventNotification;
 
-		public void NotifyEvent(Events eventType, object argument = null)
+		private const string FallBackTexture = "Empty";
+
+		// Wrapper to avoid Exceptions and load empty textures instead when there are issues with any of them
+		protected Texture2D LoadTexture(string textureName)
+		{
+			var texture = _contentManager.Load<Texture2D>(textureName);
+
+			return texture ?? _contentManager.Load<Texture2D>(FallBackTexture);
+		}
+
+        // TODO: refactor contentManager copy hold strategy defined in page 79 aroung mid page to use the new
+        //       UnloadAsset(String) -> https://docs.monogame.net/api/Microsoft.Xna.Framework.Content.ContentManager.html#Microsoft_Xna_Framework_Content_ContentManager_UnloadAsset_System_String_
+		//       -> At the time this book was written this method did not exist and there was no way to remove specific assets. This was a workaround of that limitation.
+        private ContentManager _contentManager;
+
+		public void Initialize(ContentManager contentManager)
+		{
+			_contentManager = contentManager;
+		}
+
+        public void UnloadContent()
+        {
+            _contentManager.Unload();
+        }
+        // TODO: End of refactor ^
+        public void NotifyEvent(Events eventType, object argument = null)
 		{
 			OnEventNotification?.Invoke(this, eventType);
 			foreach (var gameObject in _gameObjects)

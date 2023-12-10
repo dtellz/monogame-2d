@@ -35,6 +35,10 @@
     <Folder Include="Objects\" />
     <Folder Include="Objects\Base\" />
     <Folder Include="Content\images\" />
+    <Folder Include=".config\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".config\dotnet-tools.json" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
