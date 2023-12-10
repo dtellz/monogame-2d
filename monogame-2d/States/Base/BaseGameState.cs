@@ -15,7 +15,7 @@ namespace monogame2d.States.Base
 		private readonly List<BaseGameObject> _gameObjects =
 			new List<BaseGameObject>();
 
-		public abstract void LoadContent(ContentManager contentManager);
+		public abstract void LoadContent();
 
 		public abstract void HandleInput();
 

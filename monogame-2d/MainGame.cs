@@ -17,8 +17,8 @@ public class MainGame : Game
     
     private RenderTarget2D _renderTarget;
     private Rectangle _renderScaleRectangle;
-    private const int DESIGNED_RESOLUTION_WIDTH = 640;
-    private const int DESIGNED_RESOLUTION_HEIGHT = 480;
+    private const int DESIGNED_RESOLUTION_WIDTH = 1280;
+    private const int DESIGNED_RESOLUTION_HEIGHT = 720;
 
     private const float DESIGNED_RESOLUTION_ASPECT_RATIO = DESIGNED_RESOLUTION_WIDTH / (float)DESIGNED_RESOLUTION_HEIGHT;
 
@@ -122,9 +122,10 @@ public class MainGame : Game
 
     private void SwitchGameState(BaseGameState gameState)
     {
-        _currentGameState?.UnloadContent(Content);
+        _currentGameState?.UnloadContent();
         _currentGameState = gameState;
-        _currentGameState.LoadContent(Content);
+        _currentGameState.Initialize(Content);
+        _currentGameState.LoadContent();
         _currentGameState.OnStateSwitched += CurrentGameState_OnStateSwitched;
         _currentGameState.OnEventNotification += _currentGameState_OnEventNotification;
 
