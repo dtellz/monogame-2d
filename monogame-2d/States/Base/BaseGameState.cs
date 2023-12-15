@@ -22,7 +22,7 @@ namespace monogame2d.States.Base
 		public event EventHandler<BaseGameState> OnStateSwitched;
 		public event EventHandler<Events> OnEventNotification;
 
-		private const string FallBackTexture = "Empty";
+		private const string FallBackTexture = "images/Empty";
 
 		// Wrapper to avoid Exceptions and load empty textures instead when there are issues with any of them
 		protected Texture2D LoadTexture(string textureName)
