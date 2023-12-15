@@ -9,13 +9,13 @@ namespace monogame2d.Objects.Base
 	{
 		protected Texture2D _texture;
 
-		private Vector2 _position;
+		protected Vector2 _position;
 
 		public int zIndex;
 
 		public virtual void OnNotify(Events eventType) { }
 
-		public void Render(SpriteBatch spriteBatch)
+		public virtual void Render(SpriteBatch spriteBatch)
 		{
 			// TODO: drawing call here
 			spriteBatch.Draw(_texture, Vector2.One, Color.White);

@@ -14,7 +14,7 @@ namespace monogame2d.States
         private const string BackgroundTexture = "images/Barren";
         public override void LoadContent()
         {
-            AddGameObject(new SplashImage(LoadTexture(BackgroundTexture)));
+            AddGameObject(new TerrainBackground(LoadTexture(BackgroundTexture)));
             AddGameObject(new SplashImage(LoadTexture(PlayerFighter)));
         }
 
