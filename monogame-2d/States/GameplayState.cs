@@ -19,8 +19,8 @@ namespace monogame2d.States
             _playerSprite = new PlayerSprite(LoadTexture(PlayerFighter));
             
             // position the player in the middle of the screen, at the bottom, leaving a slight gap at the bottom
-            var playerXPos = _viewportWidth / 2 - _playerSprite.Width / 2;
-            var playerYPos = _viewportHeight - _playerSprite.Height - 30;
+            var playerXPos = _viewportWidth / 2 + _playerSprite.Width / 2;
+            var playerYPos = _viewportHeight - _playerSprite.Height - 80;
             _playerSprite.Position = new Vector2(playerXPos, playerYPos);
             AddGameObject(_playerSprite);
         }

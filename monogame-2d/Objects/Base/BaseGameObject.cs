@@ -26,7 +26,7 @@ namespace monogame2d.Objects.Base
 		public virtual void Render(SpriteBatch spriteBatch)
 		{
 			// TODO: drawing call here
-			spriteBatch.Draw(_texture, Vector2.One, Color.White);
+			spriteBatch.Draw(_texture, _position, Color.White);
 		}
 
 	}
