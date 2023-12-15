@@ -24,6 +24,10 @@ namespace monogame2d.States.Base
 
 		private const string FallBackTexture = "images/Empty";
 
+		protected int _viewportHeight;
+
+		protected int _viewportWidth;
+
 		// Wrapper to avoid Exceptions and load empty textures instead when there are issues with any of them
 		protected Texture2D LoadTexture(string textureName)
 		{
@@ -37,9 +41,11 @@ namespace monogame2d.States.Base
 		//       -> At the time this book was written this method did not exist and there was no way to remove specific assets. This was a workaround of that limitation.
         private ContentManager _contentManager;
 
-		public void Initialize(ContentManager contentManager)
+		public void Initialize(ContentManager contentManager, int viewportWidht, int viewportHeight)
 		{
 			_contentManager = contentManager;
+			_viewportWidth = viewportWidht;
+			_viewportHeight = viewportHeight;
 		}
 
         public void UnloadContent()
