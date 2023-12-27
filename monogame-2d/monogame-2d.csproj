@@ -19,6 +19,8 @@
     <None Remove="Objects\" />
     <None Remove="Objects\Base\" />
     <None Remove="Content\images\" />
+    <None Remove="Input\" />
+    <None Remove="Input\Base\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -36,6 +38,8 @@
     <Folder Include="Objects\Base\" />
     <Folder Include="Content\images\" />
     <Folder Include=".config\" />
+    <Folder Include="Input\" />
+    <Folder Include="Input\Base\" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".config\dotnet-tools.json" />

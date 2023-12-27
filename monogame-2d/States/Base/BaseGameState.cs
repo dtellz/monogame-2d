@@ -4,6 +4,7 @@ using System.Linq;
 
 using monogame2d.Objects.Base;
 using monogame2d.Enum;
+using monogame2d.Input.Base;
 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,6 +28,8 @@ namespace monogame2d.States.Base
 		protected int _viewportHeight;
 
 		protected int _viewportWidth;
+
+		protected InputManager InputManager { get; set; }
 
 		// Wrapper to avoid Exceptions and load empty textures instead when there are issues with any of them
 		protected Texture2D LoadTexture(string textureName)
