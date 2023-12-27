@@ -22,6 +22,11 @@ namespace monogame2d.States
                 SwitchState(new GameplayState());
             }
         }
+
+        protected override void SetInputManager()
+        {
+            Console.WriteLine("SplashState input manager Not implemented");
+        }
     }
 }
 

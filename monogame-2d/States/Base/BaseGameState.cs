@@ -31,6 +31,8 @@ namespace monogame2d.States.Base
 
 		protected InputManager InputManager { get; set; }
 
+		protected abstract void SetInputManager();
+
 		// Wrapper to avoid Exceptions and load empty textures instead when there are issues with any of them
 		protected Texture2D LoadTexture(string textureName)
 		{
@@ -49,6 +51,8 @@ namespace monogame2d.States.Base
 			_contentManager = contentManager;
 			_viewportWidth = viewportWidht;
 			_viewportHeight = viewportHeight;
+
+			SetInputManager();
 		}
 
         public void UnloadContent()
