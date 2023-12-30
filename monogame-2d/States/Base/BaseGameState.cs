@@ -8,6 +8,7 @@ using monogame2d.Input.Base;
 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace monogame2d.States.Base
 {
@@ -18,7 +19,7 @@ namespace monogame2d.States.Base
 
 		public abstract void LoadContent();
 
-		public abstract void HandleInput();
+		public abstract void HandleInput(GameTime gameTime);
 
 		public event EventHandler<BaseGameState> OnStateSwitched;
 		public event EventHandler<Events> OnEventNotification;

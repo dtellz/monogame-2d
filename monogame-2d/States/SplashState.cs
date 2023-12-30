@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using monogame2d.Objects;
 using monogame2d.States.Base;
 using System;
@@ -14,7 +15,7 @@ namespace monogame2d.States
             AddGameObject(new SplashImage(LoadTexture("images/splash")));
         }
 
-        public override void HandleInput()
+        public override void HandleInput(GameTime gameTime)
         {
             var state = Keyboard.GetState();
             if (state.IsKeyDown(Keys.Enter))

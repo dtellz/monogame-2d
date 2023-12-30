@@ -56,7 +56,7 @@ public class MainGame : Game
 
     protected override void Update(GameTime gameTime)
     {
-        _currentGameState.HandleInput();
+        _currentGameState.HandleInput(gameTime);
             
         // TODO: Add your update logic here
 

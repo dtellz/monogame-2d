@@ -21,6 +21,9 @@ namespace monogame2d.States
         private List<BulletSprite> _bulletList;
         private PlayerSprite _playerSprite;
 
+        private bool _isShooting;
+        private TimeSpan _lastShotAt;
+
         public override void LoadContent()
         {
             AddGameObject(new TerrainBackground(LoadTexture(BackgroundTexture)));
@@ -36,7 +39,7 @@ namespace monogame2d.States
             AddGameObject(_playerSprite);
         }
 
-        public override void HandleInput()
+        public override void HandleInput(GameTime gameTime)
         {
             InputManager.GetCommands( cmd =>
             {
@@ -55,7 +58,41 @@ namespace monogame2d.States
                     KeepPlayerInbounds();
                     Console.WriteLine($"DEBUG -> {_playerSprite.Width}");
                 }
+                if (cmd is GameplayInputCommand.PlayerShoots)
+                {
+                    Shoot(gameTime);
+                }
             });
+        }
+
+        private void Shoot(GameTime gameTime)
+        {
+            if (!_isShooting)
+            {
+                CreateBullets();
+                _isShooting = true;
+                _lastShotAt = gameTime.TotalGameTime;
+            }
+        }
+
+        private void CreateBullets()
+        {
+            var bulletSpriteLeft = new BulletSprite(_bulletTexture);
+            var bulletSpriteRight = new BulletSprite(_bulletTexture);
+
+            // Initial position around player's nose when shoot
+            var bulletY = _playerSprite.Position.Y + 30;
+            var bulletLeftX = _playerSprite.Position.X + _playerSprite.Width / 2 - 40;
+            var bulletRightX = _playerSprite.Position.X + _playerSprite.Width / 2 + 10;
+
+            bulletSpriteLeft.Position = new Vector2(bulletLeftX, bulletY);
+            bulletSpriteRight.Position = new Vector2(bulletRightX, bulletY);
+
+            _bulletList.Add(bulletSpriteLeft);
+            _bulletList.Add(bulletSpriteRight);
+
+            AddGameObject(bulletSpriteLeft);
+            AddGameObject(bulletSpriteRight);
         }
 
         protected override void SetInputManager()
