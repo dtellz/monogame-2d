@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 using monogame2d.Enum;
 using monogame2d.States.Base;
 using monogame2d.Objects;
 using monogame2d.Input;
 using monogame2d.Input.Base;
+
 
 namespace monogame2d.States
 {
@@ -14,11 +15,19 @@ namespace monogame2d.States
     {
         private const string PlayerFighter = "images/fighter";
         private const string BackgroundTexture = "images/Barren";
+        private const string BulletTexture = "images/bullet";
+
+        private Texture2D _bulletTexture;
+        private List<BulletSprite> _bulletList;
         private PlayerSprite _playerSprite;
+
         public override void LoadContent()
         {
             AddGameObject(new TerrainBackground(LoadTexture(BackgroundTexture)));
             _playerSprite = new PlayerSprite(LoadTexture(PlayerFighter));
+            _bulletTexture = LoadTexture(BulletTexture);
+
+            _bulletList = new List<BulletSprite>();
             
             // position the player in the middle of the screen, at the bottom, leaving a slight gap at the bottom
             var playerXPos = _viewportWidth / 2 + _playerSprite.Width / 2;
