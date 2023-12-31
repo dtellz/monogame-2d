@@ -19,6 +19,7 @@ namespace monogame2d.States
 
         private Texture2D _bulletTexture;
         private List<BulletSprite> _bulletList;
+        private List<BulletSprite> _newBulletList;
         private PlayerSprite _playerSprite;
 
         private bool _isShooting;
@@ -31,12 +32,39 @@ namespace monogame2d.States
             _bulletTexture = LoadTexture(BulletTexture);
 
             _bulletList = new List<BulletSprite>();
+            _newBulletList = new List<BulletSprite>();
             
             // position the player in the middle of the screen, at the bottom, leaving a slight gap at the bottom
             var playerXPos = _viewportWidth / 2 + _playerSprite.Width / 2;
             var playerYPos = _viewportHeight - _playerSprite.Height - 80;
             _playerSprite.Position = new Vector2(playerXPos, playerYPos);
             AddGameObject(_playerSprite);
+        }
+
+        public override void Update(GameTime gametime)
+        {
+            foreach (var bullet in _bulletList)
+            {
+                bullet.MoveUp();
+                var bulletStillOnScreen = bullet.Position.Y > -30;
+                if (bulletStillOnScreen)
+                {
+                    _newBulletList.Add(bullet);
+                }
+                else
+                {
+                    RemoveGameObject(bullet);
+                }
+            }
+
+            _bulletList = _newBulletList;
+            _newBulletList = new List<BulletSprite>();
+            // Lets lock bullet shots at 0.2 seconds - this prevents shoots to be made by keeping space pressed
+            // TODO: fix this logic branch. Pressing space keeps shooting
+            if (_lastShotAt != null && gametime.TotalGameTime - _lastShotAt > TimeSpan.FromSeconds(0.2))
+            {
+                _isShooting = false;
+            }
         }
 
         public override void HandleInput(GameTime gameTime)
@@ -56,7 +84,6 @@ namespace monogame2d.States
                 {
                     _playerSprite.MoveRight();
                     KeepPlayerInbounds();
-                    Console.WriteLine($"DEBUG -> {_playerSprite.Width}");
                 }
                 if (cmd is GameplayInputCommand.PlayerShoots)
                 {
@@ -119,5 +146,7 @@ namespace monogame2d.States
                 _playerSprite.Position = new Vector2(_playerSprite.Position.X, _viewportHeight - _playerSprite.Height);
             }
         }
+
+
     }
 }

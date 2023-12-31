@@ -56,6 +56,8 @@ namespace monogame2d.States.Base
 			SetInputManager();
 		}
 
+        public virtual void Update(GameTime gametime) { }
+
         public void UnloadContent()
         {
             _contentManager.Unload();
@@ -78,6 +80,11 @@ namespace monogame2d.States.Base
 		protected void AddGameObject(BaseGameObject gameObject)
 		{
 			_gameObjects.Add(gameObject);
+		}
+
+		protected void RemoveGameObject(BaseGameObject gameObject)
+		{
+			_gameObjects.Remove(gameObject);
 		}
 
 		public void Render(SpriteBatch spriteBatch)
