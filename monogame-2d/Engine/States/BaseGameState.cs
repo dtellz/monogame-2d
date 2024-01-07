@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using monogame2d.Objects.Base;
+using monogame2d.Engine.Objects;
 using monogame2d.Enum;
-using monogame2d.Input.Base;
+using monogame2d.Engine.Input;
 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace monogame2d.States.Base
+namespace monogame2d.Engine.States
 {
 	public abstract class BaseGameState
 	{
@@ -21,7 +21,9 @@ namespace monogame2d.States.Base
 
 		public abstract void HandleInput(GameTime gameTime);
 
-		public event EventHandler<BaseGameState> OnStateSwitched;
+        public abstract void UpdateGameState(GameTime gameTime);
+
+        public event EventHandler<BaseGameState> OnStateSwitched;
 		public event EventHandler<Events> OnEventNotification;
 
 		private const string FallBackTexture = "images/Empty";

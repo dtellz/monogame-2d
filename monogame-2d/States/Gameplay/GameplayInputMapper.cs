@@ -1,9 +1,9 @@
 ﻿using System;
-using monogame2d.Input.Base;
+using monogame2d.Engine.Input;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 
-namespace monogame2d.Input
+namespace monogame2d.States.Gameplay
 {
 	public class GameplayInputMapper : BaseInputMapper
 	{

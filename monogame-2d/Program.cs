@@ -1,7 +1,7 @@
 ﻿
 using System;
-using monogame_2d;
-using monogame2d.States;
+using monogame_2d.Engine;
+using monogame2d.States.Splash;
 
 namespace monogame2d
 {

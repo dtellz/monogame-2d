@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using monogame2d.Enum;
-using monogame2d.States.Base;
+using monogame2d.Engine.States;
 using monogame2d.Objects;
-using monogame2d.Input;
-using monogame2d.Input.Base;
+using monogame2d.Engine.Input;
 
 
-namespace monogame2d.States
+
+namespace monogame2d.States.Gameplay
 {
     public class GameplayState : BaseGameState
     {
@@ -66,6 +66,8 @@ namespace monogame2d.States
                 _isShooting = false;
             }
         }
+
+        public override void UpdateGameState(GameTime gameTime) { }
 
         public override void HandleInput(GameTime gameTime)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace monogame2d.Input.Base
+namespace monogame2d.Engine.Input
 {
     public class BaseInputMapper
     {

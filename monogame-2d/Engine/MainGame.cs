@@ -4,10 +4,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using monogame2d.Enum;
-using monogame2d.Objects;
-using monogame2d.States;
-using monogame2d.States.Base;
-namespace monogame_2d;
+using monogame2d.Engine.States;
+namespace monogame_2d.Engine;
 
 public class MainGame : Game
 {

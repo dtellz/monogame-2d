@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace monogame2d.Input.Base
+namespace monogame2d.Engine.Input
 {
     public class InputManager
     {

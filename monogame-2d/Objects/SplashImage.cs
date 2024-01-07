@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using monogame2d.Objects.Base;
+using monogame2d.Engine.Objects;
 
 namespace monogame2d.Objects
 {

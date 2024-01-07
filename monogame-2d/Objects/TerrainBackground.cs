@@ -1,5 +1,5 @@
 ﻿using System;
-using monogame2d.Objects.Base;
+using monogame2d.Engine.Objects;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 

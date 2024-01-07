@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using monogame2d.Enum;
 
 
-namespace monogame2d.Objects.Base
+namespace monogame2d.Engine.Objects
 {
 	public class BaseGameObject
 	{

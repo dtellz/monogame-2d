@@ -14,13 +14,15 @@
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="States\" />
-    <None Remove="States\Base\" />
     <None Remove="Enum\" />
     <None Remove="Objects\" />
-    <None Remove="Objects\Base\" />
     <None Remove="Content\images\" />
-    <None Remove="Input\" />
-    <None Remove="Input\Base\" />
+    <None Remove="Engine\" />
+    <None Remove="Engine\Input\" />
+    <None Remove="States\Gameplay\" />
+    <None Remove="States\Splash\" />
+    <None Remove="Engine\States\" />
+    <None Remove="Engine\Objects\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -32,14 +34,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="States\" />
-    <Folder Include="States\Base\" />
     <Folder Include="Enum\" />
     <Folder Include="Objects\" />
-    <Folder Include="Objects\Base\" />
     <Folder Include="Content\images\" />
     <Folder Include=".config\" />
-    <Folder Include="Input\" />
-    <Folder Include="Input\Base\" />
+    <Folder Include="Engine\" />
+    <Folder Include="Engine\Input\" />
+    <Folder Include="States\Gameplay\" />
+    <Folder Include="States\Splash\" />
+    <Folder Include="Engine\States\" />
+    <Folder Include="Engine\Objects\" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".config\dotnet-tools.json" />
