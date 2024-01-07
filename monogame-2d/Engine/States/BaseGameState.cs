@@ -79,16 +79,17 @@ namespace monogame2d.Engine.States
             _contentManager.Unload();
         }
         // TODO: End of refactor ^
-        public void NotifyEvent(BaseGameStateEvent eventType, object argument = null)
-		{
-			OnEventNotification?.Invoke(this, eventType);
-			foreach (var gameObject in _gameObjects)
-			{
-				gameObject.OnNotify(eventType);
-			}
-		}
+        protected void NotifyEvent(BaseGameStateEvent gameEvent)
+        {
+            OnEventNotification?.Invoke(this, gameEvent);
+            foreach (var gameObject in _gameObjects)
+            {
+                gameObject.OnNotify(gameEvent);
+            }
+            _soundManager.OnNotify(gameEvent);
+        }
 
-		protected void SwitchState(BaseGameState gameState)
+        protected void SwitchState(BaseGameState gameState)
 		{
 			OnStateSwitched?.Invoke(this, gameState);
 		}

@@ -45,6 +45,9 @@ namespace monogame2d.States.Gameplay
             var track1 = LoadSound("music/FutureAmbient_1").CreateInstance();
             var track2 = LoadSound("music/FutureAmbient_2").CreateInstance();
             _soundManager.SetSoundtrack(new List<SoundEffectInstance>() { track1, track2 });
+
+            var bulletSound = LoadSound("sounds/bullet");
+            _soundManager.RegisterSound(new GamePlayEvents.PlayerShoots(), bulletSound);
         }
 
         public override void UpdateGameState(GameTime gametime)
@@ -105,6 +108,8 @@ namespace monogame2d.States.Gameplay
                 CreateBullets();
                 _isShooting = true;
                 _lastShotAt = gameTime.TotalGameTime;
+
+                NotifyEvent(new GamePlayEvents.PlayerShoots());
             }
         }
 
