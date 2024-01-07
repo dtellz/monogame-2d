@@ -23,6 +23,8 @@
     <None Remove="States\Splash\" />
     <None Remove="Engine\States\" />
     <None Remove="Engine\Objects\" />
+    <None Remove="Content\music\" />
+    <None Remove="Content\sounds\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -44,6 +46,8 @@
     <Folder Include="States\Splash\" />
     <Folder Include="Engine\States\" />
     <Folder Include="Engine\Objects\" />
+    <Folder Include="Content\music\" />
+    <Folder Include="Content\sounds\" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".config\dotnet-tools.json" />
