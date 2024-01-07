@@ -25,6 +25,7 @@
     <None Remove="Engine\Objects\" />
     <None Remove="Content\music\" />
     <None Remove="Content\sounds\" />
+    <None Remove="Engine\Sound\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -48,6 +49,7 @@
     <Folder Include="Engine\Objects\" />
     <Folder Include="Content\music\" />
     <Folder Include="Content\sounds\" />
+    <Folder Include="Engine\Sound\" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".config\dotnet-tools.json" />
