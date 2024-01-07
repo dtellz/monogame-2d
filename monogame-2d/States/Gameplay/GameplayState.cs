@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using monogame2d.Enum;
+using Microsoft.Xna.Framework.Audio;
 using monogame2d.Engine.States;
 using monogame2d.Engine.Sound;
 using monogame2d.Objects;
@@ -40,9 +40,14 @@ namespace monogame2d.States.Gameplay
             var playerYPos = _viewportHeight - _playerSprite.Height - 80;
             _playerSprite.Position = new Vector2(playerXPos, playerYPos);
             AddGameObject(_playerSprite);
+
+            // Sound settings
+            var track1 = LoadSound("music/FutureAmbient_1").CreateInstance();
+            var track2 = LoadSound("music/FutureAmbient_2").CreateInstance();
+            _soundManager.SetSoundtrack(new List<SoundEffectInstance>() { track1, track2 });
         }
 
-        public override void Update(GameTime gametime)
+        public override void UpdateGameState(GameTime gametime)
         {
             foreach (var bullet in _bulletList)
             {
@@ -68,15 +73,13 @@ namespace monogame2d.States.Gameplay
             }
         }
 
-        public override void UpdateGameState(GameTime gameTime) { }
-
         public override void HandleInput(GameTime gameTime)
         {
             InputManager.GetCommands( cmd =>
             {
                 if (cmd is GameplayInputCommand.GameExit)
                 {
-                    NotifyEvent(Events.GAME_QUIT);
+                    NotifyEvent(new BaseGameStateEvent.GameQuit());
                 }
                 if (cmd is GameplayInputCommand.PlayerMoveLeft)
                 {

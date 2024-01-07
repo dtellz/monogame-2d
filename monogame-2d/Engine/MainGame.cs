@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using monogame2d.Enum;
 using monogame2d.Engine.States;
 namespace monogame_2d.Engine;
 
@@ -132,7 +131,7 @@ public class MainGame : Game
         return scaleRectangle;
     }
 
-    public virtual void OnNotify(Events eventType) { }
+    public virtual void OnNotify(BaseGameStateEvent eventType) { }
 
     private void SwitchGameState(BaseGameState gameState)
     {
@@ -145,11 +144,11 @@ public class MainGame : Game
 
     }
 
-    private void _currentGameState_OnEventNotification(object sender, Events e)
+    private void _currentGameState_OnEventNotification(object sender, BaseGameStateEvent e)
     {
         switch (e)
         {
-            case Events.GAME_QUIT:
+            case BaseGameStateEvent.GameQuit:
                 Exit();
                 break;
         }

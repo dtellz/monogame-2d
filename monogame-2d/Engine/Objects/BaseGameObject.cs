@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using monogame2d.Enum;
+using monogame2d.Engine.States;
 
 
 namespace monogame2d.Engine.Objects
@@ -21,7 +21,7 @@ namespace monogame2d.Engine.Objects
             set { _position = value; }
         }
 
-        public virtual void OnNotify(Events eventType) { }
+        public virtual void OnNotify(BaseGameStateEvent eventType) { }
 
 		public virtual void Render(SpriteBatch spriteBatch)
 		{

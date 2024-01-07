@@ -14,7 +14,6 @@
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="States\" />
-    <None Remove="Enum\" />
     <None Remove="Objects\" />
     <None Remove="Content\images\" />
     <None Remove="Engine\" />
@@ -37,7 +36,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="States\" />
-    <Folder Include="Enum\" />
     <Folder Include="Objects\" />
     <Folder Include="Content\images\" />
     <Folder Include=".config\" />

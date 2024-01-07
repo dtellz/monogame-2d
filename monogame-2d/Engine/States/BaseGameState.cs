@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using monogame2d.Engine.Objects;
-using monogame2d.Enum;
+using monogame2d.Engine.States;
 using monogame2d.Engine.Input;
 using monogame2d.Engine.Sound;
 
@@ -26,8 +26,14 @@ namespace monogame2d.Engine.States
 
         public abstract void UpdateGameState(GameTime gameTime);
 
+		public void Update(GameTime gameTime)
+		{
+			UpdateGameState(gameTime);
+			_soundManager.PlaySoundtrack();
+		}
+
         public event EventHandler<BaseGameState> OnStateSwitched;
-		public event EventHandler<Events> OnEventNotification;
+		public event EventHandler<BaseGameStateEvent> OnEventNotification;
 
 		private const string FallBackTexture = "images/Empty";
 
@@ -68,14 +74,12 @@ namespace monogame2d.Engine.States
 			SetInputManager();
 		}
 
-        public virtual void Update(GameTime gametime) { }
-
         public void UnloadContent()
         {
             _contentManager.Unload();
         }
         // TODO: End of refactor ^
-        public void NotifyEvent(Events eventType, object argument = null)
+        public void NotifyEvent(BaseGameStateEvent eventType, object argument = null)
 		{
 			OnEventNotification?.Invoke(this, eventType);
 			foreach (var gameObject in _gameObjects)
