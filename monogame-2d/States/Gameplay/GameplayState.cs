@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using monogame2d.Enum;
 using monogame2d.Engine.States;
+using monogame2d.Engine.Sound;
 using monogame2d.Objects;
 using monogame2d.Engine.Input;
 

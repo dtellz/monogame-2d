@@ -5,9 +5,12 @@ using System.Linq;
 using monogame2d.Engine.Objects;
 using monogame2d.Enum;
 using monogame2d.Engine.Input;
+using monogame2d.Engine.Sound;
 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework;
 
 namespace monogame2d.Engine.States
@@ -35,6 +38,13 @@ namespace monogame2d.Engine.States
 		protected InputManager InputManager { get; set; }
 
 		protected abstract void SetInputManager();
+
+		protected SoundManager _soundManager = new SoundManager();
+
+		protected SoundEffect LoadSound(string soundName)
+		{
+			return _contentManager.Load<SoundEffect>(soundName);
+		}
 
 		// Wrapper to avoid Exceptions and load empty textures instead when there are issues with any of them
 		protected Texture2D LoadTexture(string textureName)
